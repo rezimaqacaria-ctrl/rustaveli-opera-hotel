@@ -12,7 +12,7 @@
         :root {
             --bg-main: #12090a;
             --bg-secondary: #1a0d0f;
-            --bg-card: rgba(35, 18, 22, 0.5);
+            --bg-card: rgba(35, 18, 22, 0.7);
             --border-color: rgba(180, 140, 100, 0.25);
             --text-light: #f4ede4;
             --text-muted: #c2b5b0;
@@ -50,7 +50,7 @@
             top: 0;
             width: 100%;
             z-index: 100;
-            background: rgba(18, 9, 10, 0.8);
+            background: rgba(18, 9, 10, 0.85);
             backdrop-filter: blur(10px);
         }
 
@@ -137,7 +137,7 @@
             display: inline-block;
         }
 
-        /* --- Glassmorphic Cards (სიმეტრიული და მოწესრიგებული ინტერიერით) --- */
+        /* --- Glassmorphic Cards (სრულად გასწორებული სიმაღლეები და ბადე) --- */
         .glass-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -149,19 +149,18 @@
             background: var(--bg-card);
             backdrop-filter: blur(12px);
             border: 1px solid var(--border-color);
-            padding: 40px 30px;
+            padding: 35px 25px;
             border-radius: 6px;
-            transition: transform 0.4s;
+            height: auto; /* ავტომატური სიმაღლე, რომ ტექსტი არასდროს გაცდეს ბარათს */
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
-
-        .glass-card:hover { transform: translateY(-5px); border-color: var(--accent-gold); }
 
         .glass-card h3 {
             font-size: 22px;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             color: var(--accent-gold);
         }
 
@@ -171,7 +170,7 @@
             font-size: 15px;
             display: flex;
             flex-direction: column;
-            gap: 16px; /* სწორი დაშორებები ხაზებს შორის */
+            gap: 14px;
         }
         
         .glass-card ul li { 
@@ -287,7 +286,7 @@
         .plan-item:hover { border-color: var(--accent-gold); }
         .plan-item img { width: 90%; height: 90%; object-fit: contain; filter: invert(1) opacity(0.7); }
 
-        /* --- Footer (სრულად გასწორებული და სიმეტრიული) --- */
+        /* --- Footer --- */
         footer {
             border-top: 1px solid rgba(255,255,255,0.08);
             padding: 70px 40px;
@@ -347,7 +346,7 @@
         }
         @media (max-width: 768px) {
             .nav-links { display: none; }
-            .hero h1 { font-size: 30px; }
+            .hero h1 { font-size: 28px; }
             .glass-grid, .bento-grid, .plans-grid { grid-template-columns: 1fr; grid-auto-rows: 250px; }
             .span-2-row { grid-row: span 1; }
             .section-wrapper { padding: 40px 20px; }
