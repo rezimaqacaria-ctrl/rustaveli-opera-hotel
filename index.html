@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Valdo | ექსკლუზიური უძრავი ქონება</title>
+    <title>Valdo Company Limited | ექსკლუზიური უძრავი ქონება</title>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -19,15 +19,8 @@
             --accent-gold: #c2a37d;
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
 
         body {
             font-family: 'Inter', sans-serif;
@@ -42,6 +35,10 @@
             font-weight: 500;
         }
 
+        /* ენების მართვის კლასები */
+        body.ka .en-text { display: none !important; }
+        body.en .ka-text { display: none !important; }
+
         /* --- ნავიგაცია --- */
         nav {
             display: flex;
@@ -55,17 +52,9 @@
             z-index: 100;
         }
 
-        .logo {
-            font-size: 24px;
-            letter-spacing: 1px;
-            color: var(--text-light);
-        }
+        .logo { font-size: 24px; letter-spacing: 1px; color: var(--text-light); }
 
-        .nav-links {
-            display: flex;
-            gap: 30px;
-        }
-
+        .nav-links { display: flex; gap: 30px; }
         .nav-links a {
             font-size: 12px;
             text-transform: uppercase;
@@ -74,10 +63,9 @@
             text-decoration: none;
             transition: color 0.3s;
         }
+        .nav-links a:hover { color: var(--text-light); }
 
-        .nav-links a:hover {
-            color: var(--text-light);
-        }
+        .nav-actions { display: flex; gap: 15px; align-items: center; }
 
         .btn-outline {
             border: 1px solid var(--border-color);
@@ -92,9 +80,12 @@
             transition: all 0.3s;
             text-decoration: none;
         }
-
-        .btn-outline:hover {
-            background: var(--border-color);
+        .btn-outline:hover { background: var(--border-color); }
+        
+        #lang-btn {
+            padding: 8px 16px;
+            background: var(--bg-secondary);
+            border-color: rgba(255,255,255,0.1);
         }
 
         /* --- Hero --- */
@@ -105,39 +96,37 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            background: linear-gradient(to bottom, rgba(18, 9, 10, 0.3), var(--bg-main)), url('phasade.jpeg') center/cover;
+            background: linear-gradient(to bottom, rgba(18, 9, 10, 0.4), var(--bg-main)), url('phasade.jpeg') center/cover;
             position: relative;
             padding-top: 80px;
         }
 
         .hero h1 {
-            font-size: 54px;
-            max-width: 800px;
+            font-size: 50px;
+            max-width: 900px;
             line-height: 1.2;
             margin-bottom: 20px;
             color: #fff;
             text-shadow: 0 10px 30px rgba(0,0,0,0.8);
+            padding: 0 20px;
         }
 
         .hero-price {
             margin-top: 30px;
-            padding: 12px 40px;
+            padding: 15px 50px;
             border: 1px solid var(--accent-gold);
             color: var(--accent-gold);
-            font-size: 18px;
-            letter-spacing: 2px;
+            font-size: 22px;
+            letter-spacing: 3px;
             backdrop-filter: blur(5px);
+            background: rgba(18, 9, 10, 0.3);
         }
 
-        .section-wrapper {
-            padding: 100px 50px;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
+        .section-wrapper { padding: 100px 50px; max-width: 1400px; margin: 0 auto; }
 
         .section-title {
             font-size: 32px;
-            margin-bottom: 50px;
+            margin-bottom: 60px;
             color: var(--text-light);
             border-bottom: 1px solid var(--border-color);
             padding-bottom: 15px;
@@ -149,7 +138,7 @@
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 30px;
-            margin-bottom: 80px;
+            margin-bottom: 100px;
         }
 
         .glass-card {
@@ -161,208 +150,117 @@
             transition: transform 0.4s;
         }
 
-        .glass-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--border-color);
-        }
+        .glass-card:hover { transform: translateY(-5px); border-color: var(--border-color); }
 
         .glass-card h3 {
-            font-size: 20px;
-            margin-bottom: 20px;
+            font-size: 22px;
+            margin-bottom: 25px;
             color: var(--accent-gold);
         }
 
-        .glass-card ul {
-            list-style: none;
-            color: var(--text-muted);
-            font-size: 14px;
-        }
-
-        .glass-card ul li {
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .glass-card ul li::before {
-            content: '•';
-            color: var(--accent-gold);
-        }
+        .glass-card ul { list-style: none; color: var(--text-muted); font-size: 15px; }
+        .glass-card ul li { margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
+        .glass-card ul li::before { content: '•'; color: var(--accent-gold); font-size: 18px; }
 
         /* --- ROI კალკულატორი --- */
         .roi-container {
             background: linear-gradient(145deg, rgba(35, 18, 22, 0.6), rgba(18, 9, 10, 0.8));
             border: 1px solid var(--border-color);
-            padding: 50px;
+            padding: 60px;
             border-radius: 8px;
-            margin-bottom: 100px;
-            position: relative;
-            overflow: hidden;
+            margin-bottom: 120px;
             display: flex;
-            gap: 50px;
+            gap: 60px;
             align-items: center;
         }
 
-        .roi-container::before {
-            content: '';
-            position: absolute;
-            top: 0; left: -50%; width: 100%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(194, 163, 125, 0.05), transparent);
-            transform: skewX(-45deg);
-            animation: shine 6s infinite;
-        }
-
-        @keyframes shine {
-            0% { left: -50%; }
-            100% { left: 150%; }
-        }
-
-        .roi-info {
-            flex: 1;
-        }
-
-        .roi-info p {
-            color: var(--text-muted);
-            margin-top: 15px;
-            font-size: 15px;
-        }
+        .roi-info { flex: 1.2; }
+        .roi-info p { color: var(--text-muted); margin-top: 15px; font-size: 15px; line-height: 1.8; }
 
         .roi-calculator {
             flex: 1;
             background: rgba(0,0,0,0.3);
-            padding: 30px;
+            padding: 40px;
             border-radius: 8px;
             border: 1px solid rgba(255,255,255,0.05);
         }
 
-        .slider-group {
-            margin-bottom: 30px;
-        }
-
+        .slider-group { margin-bottom: 40px; }
         .slider-group label {
-            display: flex;
-            justify-content: space-between;
-            color: var(--text-light);
-            font-size: 14px;
-            margin-bottom: 15px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            display: flex; justify-content: space-between;
+            color: var(--text-light); font-size: 14px; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px;
         }
+        .slider-group label span { color: var(--accent-gold); font-weight: bold; font-size: 16px; }
 
-        .slider-group label span {
-            color: var(--accent-gold);
-            font-weight: bold;
-        }
-
-        input[type=range] {
-            -webkit-appearance: none;
-            width: 100%;
-            background: transparent;
-        }
-
+        input[type=range] { -webkit-appearance: none; width: 100%; background: transparent; }
         input[type=range]::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            height: 20px;
-            width: 20px;
-            border-radius: 50%;
-            background: var(--accent-gold);
-            cursor: pointer;
-            margin-top: -8px;
-            box-shadow: 0 0 10px rgba(194, 163, 125, 0.5);
+            -webkit-appearance: none; height: 22px; width: 22px; border-radius: 50%;
+            background: var(--accent-gold); cursor: pointer; margin-top: -9px; box-shadow: 0 0 15px rgba(194, 163, 125, 0.5);
         }
+        input[type=range]::-webkit-slider-runnable-track { width: 100%; height: 4px; cursor: pointer; background: rgba(255,255,255,0.1); border-radius: 2px; }
 
-        input[type=range]::-webkit-slider-runnable-track {
-            width: 100%;
-            height: 4px;
-            cursor: pointer;
-            background: rgba(255,255,255,0.1);
-            border-radius: 2px;
-        }
+        .roi-results { display: flex; justify-content: space-between; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 30px; }
+        .roi-stat { text-align: left; }
+        .roi-stat .stat-label { font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); margin-bottom: 10px; display: block; }
+        .roi-stat .stat-value { font-size: 32px; color: #fff; font-family: 'Playfair Display', serif; }
 
-        .roi-results {
-            display: flex;
-            justify-content: space-between;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            padding-top: 25px;
-        }
-
-        .roi-stat {
-            text-align: center;
-        }
-
-        .roi-stat .stat-label {
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--text-muted);
-            margin-bottom: 8px;
-            display: block;
-        }
-
-        .roi-stat .stat-value {
-            font-size: 28px;
+        /* --- კატეგორიზებული გალერეა (Bento Grid) --- */
+        .gallery-category { margin-bottom: 80px; }
+        .gallery-category-title {
+            font-size: 20px;
             color: #fff;
-            font-family: 'Playfair Display', serif;
+            margin-bottom: 30px;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .gallery-category-title::after {
+            content: ''; flex: 1; height: 1px; background: rgba(255,255,255,0.05);
         }
 
-        /* --- გალერეა --- */
-        .gallery-grid {
+        .bento-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
+            grid-auto-rows: 280px;
             gap: 20px;
-            margin-bottom: 80px;
         }
 
         .gallery-img-wrapper {
-            aspect-ratio: 1 / 1;
+            position: relative;
             overflow: hidden;
             border: 1px solid rgba(255,255,255,0.05);
-            cursor: pointer; /* მიუთითებს რომ დაჭერადია */
+            cursor: pointer;
+            border-radius: 4px;
         }
+
+        /* სპეციფიკური ზომები სურათებისთვის, რომ დიზაინი დინამიური იყოს */
+        .span-2-col { grid-column: span 2; }
+        .span-2-row { grid-row: span 2; }
 
         .gallery-img-wrapper img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: grayscale(20%) contrast(110%);
-            transition: all 0.5s;
+            width: 100%; height: 100%; object-fit: cover;
+            filter: grayscale(15%) contrast(110%);
+            transition: all 0.5s ease;
         }
-
-        .gallery-img-wrapper:hover img {
-            filter: grayscale(0%) contrast(100%);
-            transform: scale(1.05);
+        .gallery-img-wrapper:hover img { filter: grayscale(0%) contrast(100%); transform: scale(1.05); }
+        .gallery-img-wrapper::after {
+            content: '\f065'; font-family: 'FontAwesome'; position: absolute;
+            top: 50%; left: 50%; transform: translate(-50%, -50%);
+            color: #fff; font-size: 30px; opacity: 0; transition: 0.3s;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
         }
+        .gallery-img-wrapper:hover::after { opacity: 1; }
 
-        /* --- გეგმარება --- */
-        .plans-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-        }
-
+        /* ნახაზების სტილი */
+        .plans-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
         .plan-item {
-            background: var(--bg-secondary);
-            border: 1px solid rgba(255,255,255,0.05);
-            padding: 20px;
-            aspect-ratio: 1 / 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            transition: border-color 0.3s;
-            cursor: pointer; /* მიუთითებს რომ დაჭერადია */
+            background: var(--bg-secondary); border: 1px solid rgba(255,255,255,0.05); padding: 30px;
+            aspect-ratio: 1 / 1; display: flex; justify-content: center; align-items: center;
+            cursor: pointer; transition: 0.3s; border-radius: 4px;
         }
-
-        .plan-item:hover {
-            border-color: var(--accent-gold);
-        }
-
-        .plan-item img {
-            width: 80%;
-            height: 80%;
-            object-fit: contain;
-            filter: invert(1) opacity(0.7);
-        }
+        .plan-item:hover { border-color: var(--accent-gold); }
+        .plan-item img { width: 90%; height: 90%; object-fit: contain; filter: invert(1) opacity(0.6); }
 
         /* --- Footer --- */
         footer {
@@ -371,167 +269,186 @@
             display: flex;
             justify-content: space-between;
             background-color: var(--bg-secondary);
-            font-size: 13px;
+            font-size: 14px;
             color: var(--text-muted);
         }
 
-        .footer-col h4 {
-            color: var(--text-light);
-            font-size: 18px;
-            margin-bottom: 20px;
-        }
-
-        .footer-logo {
-            font-size: 32px;
-            color: var(--text-light);
-            margin-bottom: 10px;
-        }
-
+        .footer-logo { font-size: 32px; color: var(--text-light); margin-bottom: 10px; }
+        
         .contact-info a {
-            color: var(--text-muted);
-            text-decoration: none;
-            display: block;
-            margin-bottom: 10px;
-            transition: 0.3s;
+            color: var(--text-muted); text-decoration: none; display: block; margin-bottom: 15px; transition: 0.3s;
+            display: flex; align-items: center; gap: 10px;
         }
-        .contact-info a:hover {
-            color: var(--accent-gold);
-        }
+        .contact-info a:hover { color: var(--accent-gold); }
+        .contact-info i { color: var(--accent-gold); font-size: 16px; width: 20px; text-align: center; }
 
-        /* --- Lightbox (სურათის გასადიდებელი) --- */
+        /* --- Lightbox --- */
         .lightbox {
-            display: none;
-            position: fixed;
-            z-index: 9999;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(10, 5, 6, 0.95);
-            backdrop-filter: blur(10px);
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
+            display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%;
+            background-color: rgba(10, 5, 6, 0.95); backdrop-filter: blur(10px);
+            align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s;
         }
-
-        .lightbox.show {
-            opacity: 1;
-        }
-
-        .lightbox-content {
-            max-width: 85%;
-            max-height: 85vh;
-            border-radius: 4px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
-            border: 1px solid rgba(194, 163, 125, 0.2);
-            object-fit: contain;
-        }
-
-        .lightbox-close {
-            position: absolute;
-            top: 30px;
-            right: 40px;
-            color: var(--text-light);
-            font-size: 40px;
-            font-weight: 300;
-            cursor: pointer;
-            transition: color 0.3s;
-        }
-
-        .lightbox-close:hover {
-            color: var(--accent-gold);
-        }
+        .lightbox.show { opacity: 1; }
+        .lightbox-content { max-width: 90%; max-height: 90vh; border-radius: 4px; box-shadow: 0 10px 50px rgba(0,0,0,0.8); border: 1px solid rgba(194, 163, 125, 0.2); object-fit: contain; }
+        .lightbox-close { position: absolute; top: 30px; right: 40px; color: var(--text-light); font-size: 45px; font-weight: 300; cursor: pointer; transition: color 0.3s; }
+        .lightbox-close:hover { color: var(--accent-gold); }
 
         @media (max-width: 1024px) {
-            .glass-grid, .gallery-grid, .plans-grid { grid-template-columns: repeat(2, 1fr); }
+            .glass-grid, .bento-grid, .plans-grid { grid-template-columns: repeat(2, 1fr); }
+            .span-2-col { grid-column: span 1; }
             .roi-container { flex-direction: column; }
             footer { flex-direction: column; gap: 40px; }
         }
         @media (max-width: 768px) {
             .nav-links { display: none; }
-            .hero h1 { font-size: 36px; padding: 0 20px; }
-            .glass-grid, .gallery-grid, .plans-grid { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 32px; }
+            .glass-grid, .bento-grid, .plans-grid { grid-template-columns: 1fr; grid-auto-rows: 250px; }
+            .span-2-row { grid-row: span 1; }
             .section-wrapper { padding: 60px 20px; }
         }
     </style>
 </head>
-<body>
+<body class="ka">
 
-    <!-- ნავიგაცია (დამატებულია href="#id") -->
+    <!-- ნავიგაცია -->
     <nav>
         <div class="logo serif">Valdo</div>
         <div class="nav-links">
-            <a href="#home">Home</a>
-            <a href="#prestige">Prestige</a>
-            <a href="#roi">Investment</a>
-            <a href="#interiors">Interiors</a>
+            <a href="#home">
+                <span class="ka-text">მთავარი</span><span class="en-text">Home</span>
+            </a>
+            <a href="#prestige">
+                <span class="ka-text">მონაცემები</span><span class="en-text">Prestige</span>
+            </a>
+            <a href="#roi">
+                <span class="ka-text">ინვესტიცია</span><span class="en-text">Investment</span>
+            </a>
+            <a href="#interiors">
+                <span class="ka-text">ინტერიერი</span><span class="en-text">Interiors</span>
+            </a>
         </div>
-        <a href="#contact" class="btn-outline">დაკავშირება</a>
+        <div class="nav-actions">
+            <button id="lang-btn" class="btn-outline">EN</button>
+            <a href="#contact" class="btn-outline">
+                <span class="ka-text">დაკავშირება</span><span class="en-text">Contact</span>
+            </a>
+        </div>
     </nav>
 
     <!-- Hero -->
     <section class="hero" id="home">
-        <h1 class="serif">იყიდება ისტორიული შენობა რუსთაველის გამზირზე</h1>
+        <h1 class="serif">
+            <span class="ka-text">იყიდება პრემიუმ კლასის შენობა<br>რუსთაველის გამზირზე</span>
+            <span class="en-text">Premium Class Building for Sale<br>on Rustaveli Avenue</span>
+        </h1>
         <div class="hero-price">1,700,000 $</div>
     </section>
 
     <div class="section-wrapper">
         
         <!-- სპეციფიკაციები -->
-        <h2 class="section-title" id="prestige">მონაცემები</h2>
+        <h2 class="section-title serif" id="prestige">
+            <span class="ka-text">მონაცემები</span><span class="en-text">Key Specifications</span>
+        </h2>
+        
         <div class="glass-grid">
             <div class="glass-card">
-                <h3 class="serif">ძირითადი პარამეტრები</h3>
-                <ul>
-                    <li>ფართობი: 512 მ²</li>
-                    <li>სტანდარტული: 387 მ²</li>
+                <h3 class="serif">
+                    <span class="ka-text">პარამეტრები</span><span class="en-text">Parameters</span>
+                </h3>
+                <ul class="ka-text">
+                    <li>საერთო ფართობი: 512 მ²</li>
+                    <li>სტანდარტული სივრცე: 387 მ²</li>
                     <li>ნახევარსარდაფი: 125 მ²</li>
                     <li>სართულიანობა: 3 სართული</li>
                 </ul>
+                <ul class="en-text">
+                    <li>Total Area: 512 m²</li>
+                    <li>Standard Area: 387 m²</li>
+                    <li>Semi-basement: 125 m²</li>
+                    <li>Floors: 3 Floors</li>
+                </ul>
             </div>
+            
             <div class="glass-card">
-                <h3 class="serif">შენობის სტრუქტურა</h3>
-                <ul>
+                <h3 class="serif">
+                    <span class="ka-text">სტრუქტურა</span><span class="en-text">Structure</span>
+                </h3>
+                <ul class="ka-text">
                     <li>ჯამში 8 ოთახი</li>
-                    <li>7 საძინებელი ოთახი</li>
+                    <li>7 საძინებელი (სასტუმრო ოთახი)</li>
                     <li>7 იზოლირებული სველი წერტილი</li>
                     <li>აღმოსავლური თაღები (4.5მ ჭერი)</li>
                 </ul>
+                <ul class="en-text">
+                    <li>8 Rooms in total</li>
+                    <li>7 Bedrooms (Hotel Suites)</li>
+                    <li>7 En-suite Bathrooms</li>
+                    <li>Oriental Arches (4.5m Ceiling)</li>
+                </ul>
             </div>
+            
             <div class="glass-card">
-                <h3 class="serif">კაპიტალიზაცია</h3>
-                <ul>
-                    <li>ფასის 400%-იანი ზრდის პოტენციალი</li>
+                <h3 class="serif">
+                    <span class="ka-text">პოტენციალი</span><span class="en-text">Potential</span>
+                </h3>
+                <ul class="ka-text">
+                    <li>ფასის 400%-იანი ზრდის მოლოდინი</li>
                     <li>რუსთაველის სრული რეაბილიტაცია</li>
                     <li>იდეალურია ბანკის ფილიალისთვის</li>
                     <li>გამოდგება A-კლასის ოფისად</li>
                 </ul>
+                <ul class="en-text">
+                    <li>Expected 400% Price Increase</li>
+                    <li>Full Rustaveli Ave Rehabilitation</li>
+                    <li>Ideal for a Bank Branch</li>
+                    <li>Suitable for A-Class Office</li>
+                </ul>
             </div>
         </div>
 
-        <!-- ინტერაქციული ROI ზონა -->
-        <h2 class="section-title" id="roi">ფინანსური პოტენციალი</h2>
+        <!-- ROI კალკულატორი -->
+        <h2 class="section-title serif" id="roi">
+            <span class="ka-text">ფინანსური პოტენციალი</span><span class="en-text">Financial Potential</span>
+        </h2>
+        
         <div class="roi-container">
             <div class="roi-info">
-                <h3 class="serif" style="font-size: 28px; color: var(--accent-gold); margin-bottom: 10px;">ინვესტიციის უკუგება (ROI)</h3>
-                <p>დაიანგარიშეთ პოტენციური წლიური შემოსავალი 7-ოთახიანი ბუტიკ სასტუმროს კონცეფციის შემთხვევაში. გათვლები ემყარება ოთახის საშუალო დღიურ ღირებულებას (ADR) $120.</p>
-                <p style="margin-top: 20px; font-size: 13px; color: var(--border-color);">* აქტივის ღირებულება: $1,700,000</p>
+                <h3 class="serif" style="font-size: 28px; color: var(--accent-gold); margin-bottom: 10px;">
+                    <span class="ka-text">ინვესტიციის უკუგება (ROI)</span>
+                    <span class="en-text">Return on Investment (ROI)</span>
+                </h3>
+                <p class="ka-text">დაიანგარიშეთ პოტენციური წლიური შემოსავალი 7-ოთახიანი ბუტიკ სასტუმროს კონცეფციის შემთხვევაში. გათვლები ემყარება ოთახის საშუალო დღიურ ღირებულებას (ADR) $120.</p>
+                <p class="en-text">Calculate potential annual revenue based on a 7-room boutique hotel concept. Calculations are based on a $120 Average Daily Rate (ADR).</p>
+                
+                <p style="margin-top: 30px; font-size: 14px; color: var(--border-color); font-weight: 500;">
+                    <i class="fa-solid fa-building" style="margin-right: 8px;"></i>
+                    <span class="ka-text">აქტივის ღირებულება: $1,700,000</span>
+                    <span class="en-text">Asset Value: $1,700,000</span>
+                </p>
             </div>
             
             <div class="roi-calculator">
                 <div class="slider-group">
-                    <label>წლიური დატვირთულობა (Occupancy): <span id="occ-display">70%</span></label>
+                    <label>
+                        <span class="ka-text" style="color:var(--text-light); font-weight:400;">წლიური დატვირთულობა (Occupancy):</span>
+                        <span class="en-text" style="color:var(--text-light); font-weight:400;">Annual Occupancy:</span>
+                        <span id="occ-display">70%</span>
+                    </label>
                     <input type="range" id="occ-slider" min="30" max="100" value="70">
                 </div>
                 
                 <div class="roi-results">
                     <div class="roi-stat">
-                        <span class="stat-label">წლიური შემოსავალი</span>
+                        <span class="stat-label">
+                            <span class="ka-text">წლიური შემოსავალი</span><span class="en-text">Annual Revenue</span>
+                        </span>
                         <span class="stat-value" id="revenue-display">$ 214,620</span>
                     </div>
-                    <div class="roi-stat">
-                        <span class="stat-label">პროგნოზირებული ROI</span>
+                    <div class="roi-stat" style="text-align: right;">
+                        <span class="stat-label">
+                            <span class="ka-text">პროგნოზირებული ROI</span><span class="en-text">Projected ROI</span>
+                        </span>
                         <span class="stat-value" id="roi-display" style="color: var(--accent-gold);">12.6%</span>
                     </div>
                 </div>
@@ -539,65 +456,122 @@
         </div>
 
         <!-- გალერეა -->
-        <h2 class="section-title" id="interiors">ინტერიერი და სივრცეები</h2>
-        <div class="gallery-grid">
-            <div class="gallery-img-wrapper"><img src="reception.jpeg" alt="Reception"></div>
-            <div class="gallery-img-wrapper"><img src="staircase.jpeg" alt="Staircase"></div>
-            <div class="gallery-img-wrapper"><img src="second-floor-staircase.jpeg" alt="Hall"></div>
-            <div class="gallery-img-wrapper"><img src="second-floor-fall.jpeg" alt="Corridor"></div>
-            <div class="gallery-img-wrapper"><img src="bedroom.jpeg" alt="Bedroom 1"></div>
-            <div class="gallery-img-wrapper"><img src="blue-bedroom.jpeg" alt="Blue Bedroom"></div>
-            <div class="gallery-img-wrapper"><img src="bedroom-three.jpeg" alt="Bedroom 3"></div>
-            <div class="gallery-img-wrapper"><img src="bedroom-mansard.jpeg" alt="Mansard"></div>
-            <div class="gallery-img-wrapper"><img src="mansard-bedroom.jpeg" alt="Mansard 2"></div>
-            <div class="gallery-img-wrapper"><img src="toilet.jpeg" alt="Toilet"></div>
-            <div class="gallery-img-wrapper"><img src="toilet-two.jpeg" alt="Toilet 2"></div>
-            <div class="gallery-img-wrapper"><img src="washroom.jpeg" alt="Washroom"></div>
+        <h2 class="section-title serif" id="interiors">
+            <span class="ka-text">ინტერიერი და სივრცეები</span><span class="en-text">Interiors & Spaces</span>
+        </h2>
+        
+        <!-- კატეგორია: საერთო სივრცეები -->
+        <div class="gallery-category">
+            <div class="gallery-category-title serif">
+                <span class="ka-text">საერთო სივრცეები და დერეფნები</span>
+                <span class="en-text">Common Areas & Corridors</span>
+            </div>
+            <div class="bento-grid">
+                <div class="gallery-img-wrapper span-2-col span-2-row"><img src="reception.jpeg" alt="Reception"></div>
+                <div class="gallery-img-wrapper"><img src="staircase.jpeg" alt="Staircase"></div>
+                <div class="gallery-img-wrapper"><img src="second-floor-staircase.jpeg" alt="Hall"></div>
+                <div class="gallery-img-wrapper span-2-col"><img src="second-floor-fall.jpeg" alt="Corridor"></div>
+            </div>
+        </div>
+
+        <!-- კატეგორია: საძინებლები -->
+        <div class="gallery-category">
+            <div class="gallery-category-title serif">
+                <span class="ka-text">აპარტამენტები და საძინებლები</span>
+                <span class="en-text">Suites & Bedrooms</span>
+            </div>
+            <div class="bento-grid">
+                <div class="gallery-img-wrapper span-2-col span-2-row"><img src="bedroom.jpeg" alt="Master Bedroom"></div>
+                <div class="gallery-img-wrapper"><img src="blue-bedroom.jpeg" alt="Blue Bedroom"></div>
+                <div class="gallery-img-wrapper"><img src="bedroom-three.jpeg" alt="Bedroom 3"></div>
+                <div class="gallery-img-wrapper"><img src="bedroom-mansard.jpeg" alt="Mansard"></div>
+                <div class="gallery-img-wrapper"><img src="mansard-bedroom.jpeg" alt="Mansard 2"></div>
+            </div>
+        </div>
+
+        <!-- კატეგორია: სველი წერტილები -->
+        <div class="gallery-category">
+            <div class="gallery-category-title serif">
+                <span class="ka-text">სველი წერტილები</span>
+                <span class="en-text">Bathrooms</span>
+            </div>
+            <div class="bento-grid" style="grid-template-columns: repeat(3, 1fr);">
+                <div class="gallery-img-wrapper"><img src="toilet.jpeg" alt="Toilet"></div>
+                <div class="gallery-img-wrapper"><img src="toilet-two.jpeg" alt="Toilet 2"></div>
+                <div class="gallery-img-wrapper"><img src="washroom.jpeg" alt="Washroom"></div>
+            </div>
         </div>
 
         <!-- გეგმარება -->
-        <h2 class="section-title">გეგმარება</h2>
-        <div class="plans-grid">
-            <div class="plan-item"><img src="plan.jpg" alt="Plan"></div>
-            <div class="plan-item"><img src="plan-1.jpg" alt="Plan 1"></div>
-            <div class="plan-item"><img src="plan-2.jpg" alt="Plan 2"></div>
-            <div class="plan-item"><img src="plan-3.jpg" alt="Plan 3"></div>
-            <div class="plan-item"><img src="plan-4.jpg" alt="Plan 4"></div>
-            <div class="plan-item"><img src="plan-5.jpg" alt="Plan 5"></div>
-            <div class="plan-item"><img src="plan-6.jpg" alt="Plan 6"></div>
+        <div class="gallery-category">
+            <div class="gallery-category-title serif">
+                <span class="ka-text">გეგმარება და ნახაზები</span>
+                <span class="en-text">Floor Plans</span>
+            </div>
+            <div class="plans-grid">
+                <div class="plan-item"><img src="plan.jpg" alt="Plan"></div>
+                <div class="plan-item"><img src="plan-1.jpg" alt="Plan 1"></div>
+                <div class="plan-item"><img src="plan-2.jpg" alt="Plan 2"></div>
+                <div class="plan-item"><img src="plan-3.jpg" alt="Plan 3"></div>
+                <div class="plan-item"><img src="plan-4.jpg" alt="Plan 4"></div>
+                <div class="plan-item"><img src="plan-5.jpg" alt="Plan 5"></div>
+                <div class="plan-item"><img src="plan-6.jpg" alt="Plan 6"></div>
+            </div>
         </div>
 
     </div>
 
     <!-- Footer -->
     <footer id="contact">
-        <div class="footer-col">
-            <h4>High-end real<br>estate brokerage</h4>
-            <p style="margin-top: 10px;">Valdo Company</p>
-        </div>
-        
-        <div class="footer-col" style="text-align: center;">
+        <div class="footer-col" style="flex: 1;">
             <div class="footer-logo serif">Valdo</div>
-            <p>კომერციული უძრავი ქონება</p>
+            <p class="ka-text">Valdo Company Limited</p>
+            <p class="en-text">Valdo Company Limited</p>
+            <p style="margin-top: 10px; color: var(--border-color);">
+                <span class="ka-text">კომერციული უძრავი ქონების მენეჯმენტი</span>
+                <span class="en-text">Commercial Real Estate Management</span>
+            </p>
         </div>
 
-        <div class="footer-col contact-info" style="text-align: right;">
-            <h4>Contact us:</h4>
-            <a href="tel:+995592613061"><i class="fa-solid fa-phone" style="margin-right: 8px;"></i> 032 665 7760 / 592 613 061</a>
-            <a href="mailto:rezimaqacaria@gmail.com"><i class="fa-solid fa-envelope" style="margin-right: 8px;"></i> rezimaqacaria@gmail.com</a>
-            <a href="#"><i class="fa-solid fa-globe" style="margin-right: 8px;"></i> www.valdocompany.com</a>
+        <div class="footer-col contact-info" style="text-align: right; flex: 1;">
+            <h4 class="serif">
+                <span class="ka-text">საკონტაქტო ინფორმაცია:</span>
+                <span class="en-text">Contact Information:</span>
+            </h4>
+            <a href="tel:+995592613061">
+                <i class="fa-solid fa-phone"></i> +995 592 613 061
+            </a>
+            <a href="mailto:valdocompanylimited@gmail.com">
+                <i class="fa-solid fa-envelope"></i> valdocompanylimited@gmail.com
+            </a>
+            <a href="mailto:rezimaqacaria@gmail.com">
+                <i class="fa-solid fa-envelope-open"></i> rezimaqacaria@gmail.com
+            </a>
         </div>
     </footer>
 
-    <!-- Lightbox (სურათის გასადიდებლად) -->
+    <!-- Lightbox -->
     <div class="lightbox" id="lightbox">
         <span class="lightbox-close" id="lightbox-close">&times;</span>
         <img class="lightbox-content" id="lightbox-img" src="">
     </div>
 
-    <!-- JavaScript სურათების და კალკულატორის ლოგიკისთვის -->
     <script>
-        // კალკულატორის ლოგიკა
+        // --- ორენოვანი სისტემის მართვა (Language Toggle) ---
+        const langBtn = document.getElementById('lang-btn');
+        langBtn.addEventListener('click', () => {
+            if (document.body.classList.contains('ka')) {
+                document.body.classList.remove('ka');
+                document.body.classList.add('en');
+                langBtn.innerText = 'KA';
+            } else {
+                document.body.classList.remove('en');
+                document.body.classList.add('ka');
+                langBtn.innerText = 'EN';
+            }
+        });
+
+        // --- კალკულატორის ლოგიკა ---
         const occSlider = document.getElementById('occ-slider');
         const occDisplay = document.getElementById('occ-display');
         const revDisplay = document.getElementById('revenue-display');
@@ -611,52 +585,38 @@
             let occupancy = occSlider.value;
             occDisplay.innerText = occupancy + "%";
             
-            // წლიური შემოსავალი = დღეები * ოთახები * ფასი * დატვირთულობის %
             let annualRevenue = 365 * rooms * adr * (occupancy / 100);
-            
-            // ROI %
             let roi = (annualRevenue / price) * 100;
             
-            // ფორმატირება
             revDisplay.innerText = "$ " + Math.round(annualRevenue).toLocaleString();
             roiDisplay.innerText = roi.toFixed(1) + "%";
         }
         
         occSlider.addEventListener('input', calculateROI);
-        calculateROI(); // საწყისი ჩატვირთვა
+        calculateROI();
 
-        // Lightbox ლოგიკა
+        // --- Lightbox ლოგიკა ---
         const lightbox = document.getElementById('lightbox');
         const lightboxImg = document.getElementById('lightbox-img');
         const closeBtn = document.getElementById('lightbox-close');
-        
-        // ვიღებთ გალერეის და ნახაზების სურათებს
         const clickableImages = document.querySelectorAll('.gallery-img-wrapper img, .plan-item img');
         
         clickableImages.forEach(img => {
             img.addEventListener('click', function() {
                 lightbox.style.display = 'flex';
-                // მცირე დაყოვნება opacity ტრანზიციისთვის
                 setTimeout(() => lightbox.classList.add('show'), 10);
                 lightboxImg.src = this.src;
             });
         });
 
-        // დახურვა X ღილაკით
         closeBtn.addEventListener('click', closeLightbox);
-        
-        // დახურვა ფონზე დაჭერით
         lightbox.addEventListener('click', function(e) {
-            if (e.target !== lightboxImg) {
-                closeLightbox();
-            }
+            if (e.target !== lightboxImg) closeLightbox();
         });
         
         function closeLightbox() {
             lightbox.classList.remove('show');
-            setTimeout(() => {
-                lightbox.style.display = 'none';
-            }, 300); // ველოდებით CSS ანიმაციის დასრულებას
+            setTimeout(() => { lightbox.style.display = 'none'; }, 300);
         }
     </script>
 
