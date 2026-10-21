@@ -10,7 +10,6 @@
     
     <style>
         :root {
-            /* ფერები ფოტოდან */
             --bg-main: #12090a;
             --bg-secondary: #1a0d0f;
             --bg-card: rgba(35, 18, 22, 0.4);
@@ -26,6 +25,10 @@
             padding: 0;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: 'Inter', sans-serif;
             background-color: var(--bg-main);
@@ -39,7 +42,7 @@
             font-weight: 500;
         }
 
-        /* --- ნავიგაცია (Top Nav) --- */
+        /* --- ნავიგაცია --- */
         nav {
             display: flex;
             justify-content: space-between;
@@ -61,14 +64,20 @@
         .nav-links {
             display: flex;
             gap: 30px;
+        }
+
+        .nav-links a {
             font-size: 12px;
             text-transform: uppercase;
             letter-spacing: 1.5px;
             color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.3s;
         }
 
-        .nav-links span { cursor: pointer; transition: color 0.3s; }
-        .nav-links span:hover { color: var(--text-light); }
+        .nav-links a:hover {
+            color: var(--text-light);
+        }
 
         .btn-outline {
             border: 1px solid var(--border-color);
@@ -81,13 +90,14 @@
             border-radius: 4px;
             cursor: pointer;
             transition: all 0.3s;
+            text-decoration: none;
         }
 
         .btn-outline:hover {
             background: var(--border-color);
         }
 
-        /* --- Hero სექცია --- */
+        /* --- Hero --- */
         .hero {
             height: 90vh;
             display: flex;
@@ -119,7 +129,6 @@
             backdrop-filter: blur(5px);
         }
 
-        /* --- სექციების საერთო სტილი --- */
         .section-wrapper {
             padding: 100px 50px;
             max-width: 1400px;
@@ -135,7 +144,7 @@
             display: inline-block;
         }
 
-        /* --- Glassmorphic ბარათები (Backdrops) --- */
+        /* --- Glassmorphic Cards --- */
         .glass-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -181,7 +190,123 @@
             color: var(--accent-gold);
         }
 
-        /* --- გალერეა (Interiors) --- */
+        /* --- ROI კალკულატორი --- */
+        .roi-container {
+            background: linear-gradient(145deg, rgba(35, 18, 22, 0.6), rgba(18, 9, 10, 0.8));
+            border: 1px solid var(--border-color);
+            padding: 50px;
+            border-radius: 8px;
+            margin-bottom: 100px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .roi-container::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -50%; width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(194, 163, 125, 0.05), transparent);
+            transform: skewX(-45deg);
+            animation: shine 6s infinite;
+        }
+
+        @keyframes shine {
+            0% { left: -50%; }
+            100% { left: 150%; }
+        }
+
+        .roi-info {
+            flex: 1;
+        }
+
+        .roi-info p {
+            color: var(--text-muted);
+            margin-top: 15px;
+            font-size: 15px;
+        }
+
+        .roi-calculator {
+            flex: 1;
+            background: rgba(0,0,0,0.3);
+            padding: 30px;
+            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .slider-group {
+            margin-bottom: 30px;
+        }
+
+        .slider-group label {
+            display: flex;
+            justify-content: space-between;
+            color: var(--text-light);
+            font-size: 14px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .slider-group label span {
+            color: var(--accent-gold);
+            font-weight: bold;
+        }
+
+        input[type=range] {
+            -webkit-appearance: none;
+            width: 100%;
+            background: transparent;
+        }
+
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+            background: var(--accent-gold);
+            cursor: pointer;
+            margin-top: -8px;
+            box-shadow: 0 0 10px rgba(194, 163, 125, 0.5);
+        }
+
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 4px;
+            cursor: pointer;
+            background: rgba(255,255,255,0.1);
+            border-radius: 2px;
+        }
+
+        .roi-results {
+            display: flex;
+            justify-content: space-between;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 25px;
+        }
+
+        .roi-stat {
+            text-align: center;
+        }
+
+        .roi-stat .stat-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .roi-stat .stat-value {
+            font-size: 28px;
+            color: #fff;
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* --- გალერეა --- */
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -189,16 +314,11 @@
             margin-bottom: 80px;
         }
 
-        .gallery-item {
-            display: flex;
-            flex-direction: column;
-        }
-
         .gallery-img-wrapper {
             aspect-ratio: 1 / 1;
             overflow: hidden;
             border: 1px solid rgba(255,255,255,0.05);
-            margin-bottom: 15px;
+            cursor: pointer; /* მიუთითებს რომ დაჭერადია */
         }
 
         .gallery-img-wrapper img {
@@ -214,20 +334,7 @@
             transform: scale(1.05);
         }
 
-        .gallery-caption {
-            font-size: 14px;
-            color: var(--text-light);
-        }
-
-        .gallery-sub {
-            font-size: 11px;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-top: 4px;
-        }
-
-        /* --- გეგმარება (Floor Plans) --- */
+        /* --- გეგმარება --- */
         .plans-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -240,10 +347,10 @@
             padding: 20px;
             aspect-ratio: 1 / 1;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
             transition: border-color 0.3s;
+            cursor: pointer; /* მიუთითებს რომ დაჭერადია */
         }
 
         .plan-item:hover {
@@ -254,7 +361,7 @@
             width: 80%;
             height: 80%;
             object-fit: contain;
-            filter: invert(1) opacity(0.7); /* ნახაზებს თეთრად და ნახევრად გამჭვირვალედ აჩვენებს */
+            filter: invert(1) opacity(0.7);
         }
 
         /* --- Footer --- */
@@ -285,14 +392,60 @@
             text-decoration: none;
             display: block;
             margin-bottom: 10px;
+            transition: 0.3s;
         }
         .contact-info a:hover {
             color: var(--accent-gold);
         }
 
-        /* Responsive */
+        /* --- Lightbox (სურათის გასადიდებელი) --- */
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(10, 5, 6, 0.95);
+            backdrop-filter: blur(10px);
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .lightbox.show {
+            opacity: 1;
+        }
+
+        .lightbox-content {
+            max-width: 85%;
+            max-height: 85vh;
+            border-radius: 4px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            border: 1px solid rgba(194, 163, 125, 0.2);
+            object-fit: contain;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 30px;
+            right: 40px;
+            color: var(--text-light);
+            font-size: 40px;
+            font-weight: 300;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .lightbox-close:hover {
+            color: var(--accent-gold);
+        }
+
         @media (max-width: 1024px) {
             .glass-grid, .gallery-grid, .plans-grid { grid-template-columns: repeat(2, 1fr); }
+            .roi-container { flex-direction: column; }
             footer { flex-direction: column; gap: 40px; }
         }
         @media (max-width: 768px) {
@@ -305,31 +458,28 @@
 </head>
 <body>
 
-    <!-- ნავიგაცია -->
+    <!-- ნავიგაცია (დამატებულია href="#id") -->
     <nav>
         <div class="logo serif">Valdo</div>
         <div class="nav-links">
-            <span>Home</span>
-            <span>Prestige</span>
-            <span>Interiors</span>
-            <span>Contact</span>
+            <a href="#home">Home</a>
+            <a href="#prestige">Prestige</a>
+            <a href="#roi">Investment</a>
+            <a href="#interiors">Interiors</a>
         </div>
-        <button class="btn-outline">დაკავშირება</button>
+        <a href="#contact" class="btn-outline">დაკავშირება</a>
     </nav>
 
     <!-- Hero -->
-    <section class="hero">
+    <section class="hero" id="home">
         <h1 class="serif">იყიდება ისტორიული შენობა რუსთაველის გამზირზე</h1>
-        <div class="nav-links" style="margin-top: 20px; color: var(--text-light);">
-            <span>High-End Real Estate Landing Page, Luxury, Prestige</span>
-        </div>
         <div class="hero-price">1,700,000 $</div>
     </section>
 
     <div class="section-wrapper">
         
-        <!-- სპეციფიკაციები (Glassmorphic Cards) -->
-        <h2 class="section-title">მონაცემები</h2>
+        <!-- სპეციფიკაციები -->
+        <h2 class="section-title" id="prestige">მონაცემები</h2>
         <div class="glass-grid">
             <div class="glass-card">
                 <h3 class="serif">ძირითადი პარამეტრები</h3>
@@ -350,7 +500,7 @@
                 </ul>
             </div>
             <div class="glass-card">
-                <h3 class="serif">საინვესტიციო ღირებულება</h3>
+                <h3 class="serif">კაპიტალიზაცია</h3>
                 <ul>
                     <li>ფასის 400%-იანი ზრდის პოტენციალი</li>
                     <li>რუსთაველის სრული რეაბილიტაცია</li>
@@ -360,77 +510,67 @@
             </div>
         </div>
 
-        <!-- გალერეა (Interiors) -->
-        <h2 class="section-title">ინტერიერი</h2>
-        <div class="gallery-grid">
-            <div class="gallery-item">
-                <div class="gallery-img-wrapper"><img src="reception.jpeg" alt="Reception"></div>
-                <div class="gallery-caption serif">მისაღები სივრცე</div>
-                <div class="gallery-sub">Reception Area</div>
-            </div>
-            <div class="gallery-item">
-                <div class="gallery-img-wrapper"><img src="staircase.jpeg" alt="Staircase"></div>
-                <div class="gallery-caption serif">ისტორიული კიბე</div>
-                <div class="gallery-sub">Main Staircase</div>
-            </div>
-            <div class="gallery-item">
-                <div class="gallery-img-wrapper"><img src="second-floor-staircase.jpeg" alt="Hall"></div>
-                <div class="gallery-caption serif">მეორე სართული</div>
-                <div class="gallery-sub">Upper Hall</div>
-            </div>
-            <div class="gallery-item">
-                <div class="gallery-img-wrapper"><img src="second-floor-fall.jpeg" alt="Corridor"></div>
-                <div class="gallery-caption serif">დერეფანი</div>
-                <div class="gallery-sub">Corridor</div>
+        <!-- ინტერაქციული ROI ზონა -->
+        <h2 class="section-title" id="roi">ფინანსური პოტენციალი</h2>
+        <div class="roi-container">
+            <div class="roi-info">
+                <h3 class="serif" style="font-size: 28px; color: var(--accent-gold); margin-bottom: 10px;">ინვესტიციის უკუგება (ROI)</h3>
+                <p>დაიანგარიშეთ პოტენციური წლიური შემოსავალი 7-ოთახიანი ბუტიკ სასტუმროს კონცეფციის შემთხვევაში. გათვლები ემყარება ოთახის საშუალო დღიურ ღირებულებას (ADR) $120.</p>
+                <p style="margin-top: 20px; font-size: 13px; color: var(--border-color);">* აქტივის ღირებულება: $1,700,000</p>
             </div>
             
-            <div class="gallery-item">
-                <div class="gallery-img-wrapper"><img src="bedroom.jpeg" alt="Bedroom 1"></div>
-                <div class="gallery-caption serif">მთავარი საძინებელი</div>
-                <div class="gallery-sub">Master Suite</div>
-            </div>
-            <div class="gallery-item">
-                <div class="gallery-img-wrapper"><img src="blue-bedroom.jpeg" alt="Blue Bedroom"></div>
-                <div class="gallery-caption serif">ლურჯი აპარტამენტი</div>
-                <div class="gallery-sub">Blue Room</div>
-            </div>
-            <div class="gallery-item">
-                <div class="gallery-img-wrapper"><img src="bedroom-three.jpeg" alt="Bedroom 3"></div>
-                <div class="gallery-caption serif">სტუმრის ოთახი</div>
-                <div class="gallery-sub">Guest Room</div>
-            </div>
-            <div class="gallery-item">
-                <div class="gallery-img-wrapper"><img src="bedroom-mansard.jpeg" alt="Mansard"></div>
-                <div class="gallery-caption serif">მანსარდის სივრცე</div>
-                <div class="gallery-sub">Top Floor Suite</div>
+            <div class="roi-calculator">
+                <div class="slider-group">
+                    <label>წლიური დატვირთულობა (Occupancy): <span id="occ-display">70%</span></label>
+                    <input type="range" id="occ-slider" min="30" max="100" value="70">
+                </div>
+                
+                <div class="roi-results">
+                    <div class="roi-stat">
+                        <span class="stat-label">წლიური შემოსავალი</span>
+                        <span class="stat-value" id="revenue-display">$ 214,620</span>
+                    </div>
+                    <div class="roi-stat">
+                        <span class="stat-label">პროგნოზირებული ROI</span>
+                        <span class="stat-value" id="roi-display" style="color: var(--accent-gold);">12.6%</span>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <!-- გეგმარება (Plans) -->
+        <!-- გალერეა -->
+        <h2 class="section-title" id="interiors">ინტერიერი და სივრცეები</h2>
+        <div class="gallery-grid">
+            <div class="gallery-img-wrapper"><img src="reception.jpeg" alt="Reception"></div>
+            <div class="gallery-img-wrapper"><img src="staircase.jpeg" alt="Staircase"></div>
+            <div class="gallery-img-wrapper"><img src="second-floor-staircase.jpeg" alt="Hall"></div>
+            <div class="gallery-img-wrapper"><img src="second-floor-fall.jpeg" alt="Corridor"></div>
+            <div class="gallery-img-wrapper"><img src="bedroom.jpeg" alt="Bedroom 1"></div>
+            <div class="gallery-img-wrapper"><img src="blue-bedroom.jpeg" alt="Blue Bedroom"></div>
+            <div class="gallery-img-wrapper"><img src="bedroom-three.jpeg" alt="Bedroom 3"></div>
+            <div class="gallery-img-wrapper"><img src="bedroom-mansard.jpeg" alt="Mansard"></div>
+            <div class="gallery-img-wrapper"><img src="mansard-bedroom.jpeg" alt="Mansard 2"></div>
+            <div class="gallery-img-wrapper"><img src="toilet.jpeg" alt="Toilet"></div>
+            <div class="gallery-img-wrapper"><img src="toilet-two.jpeg" alt="Toilet 2"></div>
+            <div class="gallery-img-wrapper"><img src="washroom.jpeg" alt="Washroom"></div>
+        </div>
+
+        <!-- გეგმარება -->
         <h2 class="section-title">გეგმარება</h2>
         <div class="plans-grid">
-            <div class="plan-item">
-                <img src="plan.jpg" alt="Plan">
-                <div class="gallery-sub" style="margin-top: 15px;">Main Plan</div>
-            </div>
-            <div class="plan-item">
-                <img src="plan-1.jpg" alt="Plan 1">
-                <div class="gallery-sub" style="margin-top: 15px;">Floor 1</div>
-            </div>
-            <div class="plan-item">
-                <img src="plan-2.jpg" alt="Plan 2">
-                <div class="gallery-sub" style="margin-top: 15px;">Floor 2</div>
-            </div>
-            <div class="plan-item">
-                <img src="plan-3.jpg" alt="Plan 3">
-                <div class="gallery-sub" style="margin-top: 15px;">Floor 3</div>
-            </div>
+            <div class="plan-item"><img src="plan.jpg" alt="Plan"></div>
+            <div class="plan-item"><img src="plan-1.jpg" alt="Plan 1"></div>
+            <div class="plan-item"><img src="plan-2.jpg" alt="Plan 2"></div>
+            <div class="plan-item"><img src="plan-3.jpg" alt="Plan 3"></div>
+            <div class="plan-item"><img src="plan-4.jpg" alt="Plan 4"></div>
+            <div class="plan-item"><img src="plan-5.jpg" alt="Plan 5"></div>
+            <div class="plan-item"><img src="plan-6.jpg" alt="Plan 6"></div>
         </div>
 
     </div>
 
     <!-- Footer -->
-    <footer>
+    <footer id="contact">
         <div class="footer-col">
             <h4>High-end real<br>estate brokerage</h4>
             <p style="margin-top: 10px;">Valdo Company</p>
@@ -448,6 +588,77 @@
             <a href="#"><i class="fa-solid fa-globe" style="margin-right: 8px;"></i> www.valdocompany.com</a>
         </div>
     </footer>
+
+    <!-- Lightbox (სურათის გასადიდებლად) -->
+    <div class="lightbox" id="lightbox">
+        <span class="lightbox-close" id="lightbox-close">&times;</span>
+        <img class="lightbox-content" id="lightbox-img" src="">
+    </div>
+
+    <!-- JavaScript სურათების და კალკულატორის ლოგიკისთვის -->
+    <script>
+        // კალკულატორის ლოგიკა
+        const occSlider = document.getElementById('occ-slider');
+        const occDisplay = document.getElementById('occ-display');
+        const revDisplay = document.getElementById('revenue-display');
+        const roiDisplay = document.getElementById('roi-display');
+        
+        const price = 1700000;
+        const adr = 120; // ოთახის ფასი
+        const rooms = 7; // ოთახების რაოდენობა
+        
+        function calculateROI() {
+            let occupancy = occSlider.value;
+            occDisplay.innerText = occupancy + "%";
+            
+            // წლიური შემოსავალი = დღეები * ოთახები * ფასი * დატვირთულობის %
+            let annualRevenue = 365 * rooms * adr * (occupancy / 100);
+            
+            // ROI %
+            let roi = (annualRevenue / price) * 100;
+            
+            // ფორმატირება
+            revDisplay.innerText = "$ " + Math.round(annualRevenue).toLocaleString();
+            roiDisplay.innerText = roi.toFixed(1) + "%";
+        }
+        
+        occSlider.addEventListener('input', calculateROI);
+        calculateROI(); // საწყისი ჩატვირთვა
+
+        // Lightbox ლოგიკა
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const closeBtn = document.getElementById('lightbox-close');
+        
+        // ვიღებთ გალერეის და ნახაზების სურათებს
+        const clickableImages = document.querySelectorAll('.gallery-img-wrapper img, .plan-item img');
+        
+        clickableImages.forEach(img => {
+            img.addEventListener('click', function() {
+                lightbox.style.display = 'flex';
+                // მცირე დაყოვნება opacity ტრანზიციისთვის
+                setTimeout(() => lightbox.classList.add('show'), 10);
+                lightboxImg.src = this.src;
+            });
+        });
+
+        // დახურვა X ღილაკით
+        closeBtn.addEventListener('click', closeLightbox);
+        
+        // დახურვა ფონზე დაჭერით
+        lightbox.addEventListener('click', function(e) {
+            if (e.target !== lightboxImg) {
+                closeLightbox();
+            }
+        });
+        
+        function closeLightbox() {
+            lightbox.classList.remove('show');
+            setTimeout(() => {
+                lightbox.style.display = 'none';
+            }, 300); // ველოდებით CSS ანიმაციის დასრულებას
+        }
+    </script>
 
 </body>
 </html>
