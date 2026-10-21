@@ -3,832 +3,449 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ისტორიული რეზიდენცია | რუსთაველის გამზირი</title>
-    <!-- FontAwesome და Google Fonts -->
+    <title>Valdo | ექსკლუზიური უძრავი ქონება</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --bg-dark: #0a0506;
-            --bg-card: rgba(26, 12, 15, 0.45);
-            --border-burgundy: rgba(139, 0, 43, 0.25);
-            --accent-burgundy: #6b0024;
-            --accent-burgundy-light: #9e1b42;
-            --accent-gold: #c5a059;
-            --accent-gold-glow: rgba(197, 160, 89, 0.2);
-            --text-light: #f7f3f4;
-            --text-muted: #a39598;
-            --frost-backdrop: blur(12px) saturate(180%);
+            /* ფერები ფოტოდან */
+            --bg-main: #12090a;
+            --bg-secondary: #1a0d0f;
+            --bg-card: rgba(35, 18, 22, 0.4);
+            --border-color: rgba(180, 140, 100, 0.2);
+            --text-light: #f4ede4;
+            --text-muted: #a89f99;
+            --accent-gold: #c2a37d;
         }
 
-        /* ბაზისური სტილები */
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            scroll-behavior: smooth;
         }
 
         body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: var(--bg-dark);
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-main);
             color: var(--text-light);
-            line-height: 1.8;
-            overflow-x: hidden;
-            letter-spacing: 0.3px;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
         }
 
-        h1, h2, h3, .brand-font {
+        h1, h2, h3, h4, .serif {
             font-family: 'Playfair Display', serif;
-            font-weight: 700;
+            font-weight: 500;
         }
 
-        /* დახვეწილი ხაზები (Decorative Overlay) */
-        .grid-line {
-            position: fixed;
-            top: 0;
-            bottom: 0;
-            width: 1px;
-            background: linear-gradient(to bottom, transparent, rgba(139, 0, 43, 0.08), transparent);
-            z-index: 1;
-            pointer-events: none;
-        }
-        .line-1 { left: 15%; }
-        .line-2 { left: 50%; }
-        .line-3 { left: 85%; }
-
-        /* Hero სექცია */
-        .hero {
-            position: relative;
-            height: 100vh;
-            background: linear-gradient(rgba(10, 5, 6, 0.2), rgba(10, 5, 6, 0.95)), url('phasade.jpeg') center/cover no-repeat;
+        /* --- ნავიგაცია (Top Nav) --- */
+        nav {
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            justify-content: center;
-            text-align: center;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
+            padding: 30px 50px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
             position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: radial-gradient(circle at center, transparent 30%, rgba(10, 5, 6, 0.8) 100%);
-            z-index: 1;
+            top: 0;
+            width: 100%;
+            z-index: 100;
         }
 
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            max-width: 900px;
-            padding: 0 24px;
-            transform: translateY(20px);
-            animation: fadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        .logo {
+            font-size: 24px;
+            letter-spacing: 1px;
+            color: var(--text-light);
         }
 
-        .hero-badge {
-            background: linear-gradient(135deg, var(--accent-burgundy), var(--accent-burgundy-light));
-            color: #fff;
-            padding: 8px 18px;
-            font-size: 11px;
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            font-size: 12px;
             text-transform: uppercase;
-            letter-spacing: 4px;
-            border-radius: 40px;
-            display: inline-block;
-            margin-bottom: 30px;
-            box-shadow: 0 4px 20px rgba(158, 27, 66, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .hero-content h1 {
-            font-size: 58px;
-            line-height: 1.15;
-            margin-bottom: 25px;
-            text-shadow: 0 4px 20px rgba(0,0,0,0.6);
-            background: linear-gradient(135deg, #fff 40%, #e0d0d2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero-content p {
-            font-size: 20px;
+            letter-spacing: 1.5px;
             color: var(--text-muted);
-            margin-bottom: 40px;
-            font-weight: 300;
+        }
+
+        .nav-links span { cursor: pointer; transition: color 0.3s; }
+        .nav-links span:hover { color: var(--text-light); }
+
+        .btn-outline {
+            border: 1px solid var(--border-color);
+            background: transparent;
+            color: var(--text-light);
+            padding: 8px 24px;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-outline:hover {
+            background: var(--border-color);
+        }
+
+        /* --- Hero სექცია --- */
+        .hero {
+            height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(to bottom, rgba(18, 9, 10, 0.3), var(--bg-main)), url('phasade.jpeg') center/cover;
+            position: relative;
+            padding-top: 80px;
+        }
+
+        .hero h1 {
+            font-size: 54px;
+            max-width: 800px;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            color: #fff;
+            text-shadow: 0 10px 30px rgba(0,0,0,0.8);
         }
 
         .hero-price {
-            font-size: 38px;
+            margin-top: 30px;
+            padding: 12px 40px;
+            border: 1px solid var(--accent-gold);
             color: var(--accent-gold);
-            font-weight: 400;
-            letter-spacing: 1px;
-            display: inline-flex;
-            align-items: center;
-            gap: 15px;
-            padding: 10px 30px;
-            background: rgba(197, 160, 89, 0.04);
-            border-top: 1px solid rgba(197, 160, 89, 0.2);
-            border-bottom: 1px solid rgba(197, 160, 89, 0.2);
+            font-size: 18px;
+            letter-spacing: 2px;
             backdrop-filter: blur(5px);
         }
 
-        /* Container */
-        .container {
-            max-width: 1200px;
+        /* --- სექციების საერთო სტილი --- */
+        .section-wrapper {
+            padding: 100px 50px;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 100px 24px;
-            position: relative;
-            z-index: 2;
         }
 
-        /* Premium Specs */
-        .specs-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-            margin-top: -160px;
-            margin-bottom: 120px;
-        }
-
-        .spec-card {
-            background-color: var(--bg-card);
-            backdrop-filter: var(--frost-backdrop);
-            border: 1px solid var(--border-burgundy);
-            padding: 35px 25px;
-            border-radius: 12px;
-            text-align: center;
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
-
-        .spec-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 2px;
-            background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
-            transform: scaleX(0);
-            transition: transform 0.5s ease;
-        }
-
-        .spec-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .spec-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(197, 160, 89, 0.4);
-            box-shadow: 0 15px 40px rgba(197, 160, 89, 0.15);
-        }
-
-        .spec-card i {
+        .section-title {
             font-size: 32px;
-            color: var(--accent-gold);
-            margin-bottom: 20px;
-            display: block;
-        }
-
-        .spec-card .label {
-            font-size: 11px;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 5px;
-            display: block;
-        }
-
-        .spec-card .value {
-            font-size: 24px;
-            font-weight: 600;
-            color: #fff;
-        }
-
-        /* Content Sections */
-        .section-header {
-            text-align: center;
-            margin-bottom: 70px;
-        }
-
-        .section-header .sub {
-            color: var(--accent-gold);
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            display: block;
-            margin-bottom: 15px;
-        }
-
-        .section-header h2 {
-            font-size: 40px;
-            color: #fff;
-            position: relative;
+            margin-bottom: 50px;
+            color: var(--text-light);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 15px;
             display: inline-block;
         }
 
-        .section-header h2::after {
-            content: '';
-            display: block;
-            width: 40px;
-            height: 2px;
-            background: var(--accent-gold);
-            margin: 20px auto 0 auto;
-        }
-
-        /* Content Blocks */
-        .details-wrapper {
+        /* --- Glassmorphic ბარათები (Backdrops) --- */
+        .glass-grid {
             display: grid;
-            grid-template-columns: 1.1fr 0.9fr;
-            gap: 60px;
-            align-items: center;
-            margin-bottom: 120px;
-        }
-
-        .text-side {
-            background-color: var(--bg-card);
-            border: 1px solid var(--border-burgundy);
-            backdrop-filter: var(--frost-backdrop);
-            padding: 60px;
-            border-radius: 16px;
-            position: relative;
-        }
-
-        .text-side p {
-            font-size: 17px;
-            color: var(--text-muted);
-            margin-bottom: 24px;
-            font-weight: 300;
-        }
-
-        .text-side p:last-child {
-            margin-bottom: 0;
-        }
-
-        /* სართულების ჩამონათვალი */
-        .floor-list {
-            list-style: none;
-        }
-
-        .floor-item {
-            background: rgba(255,255,255,0.01);
-            border: 1px solid rgba(139, 0, 43, 0.15);
-            margin-bottom: 15px;
-            padding: 25px 30px;
-            border-radius: 8px;
-            display: flex;
-            align-items: flex-start;
-            gap: 20px;
-            transition: all 0.3s ease;
-        }
-
-        .floor-item:hover {
-            border-color: rgba(197, 160, 89, 0.3);
-            background: rgba(197, 160, 89, 0.02);
-            transform: translateX(10px);
-        }
-
-        .floor-item .number {
-            font-family: 'Playfair Display', serif;
-            font-size: 24px;
-            color: var(--accent-gold);
-            font-weight: 700;
-            line-height: 1;
-        }
-
-        .floor-item .desc h4 {
-            font-size: 18px;
-            margin-bottom: 5px;
-            color: #fff;
-        }
-
-        .floor-item .desc p {
-            font-size: 14px;
-            color: var(--text-muted);
-            font-weight: 300;
-        }
-
-        /* გალერეები */
-        .gallery-category {
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
             margin-bottom: 80px;
         }
 
-        .gallery-category h3 {
+        .glass-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255,255,255,0.06);
+            padding: 40px 30px;
+            border-radius: 4px;
+            transition: transform 0.4s;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--border-color);
+        }
+
+        .glass-card h3 {
             font-size: 20px;
-            font-weight: 500;
-            margin-bottom: 30px;
-            color: #fff;
-            letter-spacing: 1px;
+            margin-bottom: 20px;
+            color: var(--accent-gold);
+        }
+
+        .glass-card ul {
+            list-style: none;
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        .glass-card ul li {
+            margin-bottom: 12px;
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 10px;
         }
 
-        .gallery-category h3::after {
-            content: '';
-            flex: 1;
-            height: 1px;
-            background: linear-gradient(90deg, rgba(139, 0, 43, 0.3), transparent);
+        .glass-card ul li::before {
+            content: '•';
+            color: var(--accent-gold);
         }
 
-        .image-grid {
+        /* --- გალერეა (Interiors) --- */
+        .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            grid-template-columns: repeat(4, 1fr);
             gap: 20px;
+            margin-bottom: 80px;
         }
 
         .gallery-item {
-            position: relative;
-            overflow: hidden;
-            border-radius: 8px;
-            aspect-ratio: 4 / 3;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            background: #12090b;
+            display: flex;
+            flex-direction: column;
         }
 
-        .gallery-item img {
+        .gallery-img-wrapper {
+            aspect-ratio: 1 / 1;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.05);
+            margin-bottom: 15px;
+        }
+
+        .gallery-img-wrapper img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            filter: grayscale(20%) contrast(110%);
+            transition: all 0.5s;
         }
 
-        .gallery-item::after {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(to top, rgba(10, 5, 6, 0.9) 0%, transparent 60%);
-            opacity: 0.8;
-            transition: opacity 0.3s ease;
+        .gallery-img-wrapper:hover img {
+            filter: grayscale(0%) contrast(100%);
+            transform: scale(1.05);
         }
 
-        .gallery-item:hover img {
-            transform: scale(1.06);
-        }
-
-        .gallery-item:hover::after {
-            opacity: 0.95;
-        }
-
-        .gallery-item-info {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            padding: 24px;
-            z-index: 2;
-            transform: translateY(5px);
-            transition: transform 0.3s ease;
-        }
-
-        .gallery-item:hover .gallery-item-info {
-            transform: translateY(0);
-        }
-
-        .gallery-item-info span {
-            color: var(--accent-gold);
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            display: block;
-            margin-bottom: 5px;
-        }
-
-        .gallery-item-info h4 {
-            font-size: 18px;
-            color: #fff;
-        }
-
-        /* გეგმარების სურათები */
-        .image-grid.plans .gallery-item {
-            aspect-ratio: auto;
-            height: 280px;
-            background: #0f0809;
-            border: 1px solid var(--border-burgundy);
-        }
-
-        .image-grid.plans img {
-            object-fit: contain;
-            padding: 20px;
-        }
-
-        /* საინვესტიციო ბლოკი */
-        .investment-card {
-            background: radial-gradient(circle at top right, rgba(139,0,43,0.15), transparent), var(--bg-card);
-            border: 1px solid var(--border-burgundy);
-            backdrop-filter: var(--frost-backdrop);
-            padding: 60px;
-            border-radius: 16px;
-            text-align: center;
-            margin-bottom: 120px;
-            position: relative;
-        }
-
-        .investment-card i {
-            font-size: 48px;
-            color: var(--accent-gold);
-            margin-bottom: 30px;
-        }
-
-        .investment-card h3 {
-            font-size: 32px;
-            margin-bottom: 20px;
-        }
-
-        .investment-card p {
-            max-width: 800px;
-            margin: 0 auto;
-            font-size: 18px;
-            color: var(--text-muted);
-            font-weight: 300;
-        }
-
-        /* საკონტაქტო სექცია */
-        .contact-section {
-            background: linear-gradient(to top, #000000 50%, var(--bg-dark) 100%);
-            padding: 120px 24px;
-            border-top: 1px solid var(--border-burgundy);
-            position: relative;
-        }
-
-        .contact-wrapper {
-            max-width: 600px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .contact-card {
-            background-color: var(--bg-card);
-            border: 1px solid var(--border-burgundy);
-            backdrop-filter: var(--frost-backdrop);
-            padding: 50px 40px;
-            border-radius: 16px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-        }
-
-        .contact-card h3 {
-            font-size: 28px;
-            color: #fff;
-            margin-bottom: 10px;
-        }
-
-        .contact-card .sub {
-            color: var(--accent-gold);
-            text-transform: uppercase;
-            font-size: 11px;
-            letter-spacing: 3px;
-            display: block;
-            margin-bottom: 35px;
-        }
-
-        .contact-details {
-            margin-bottom: 40px;
-        }
-
-        .contact-info-item {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-            font-size: 18px;
-            margin-bottom: 20px;
+        .gallery-caption {
+            font-size: 14px;
             color: var(--text-light);
         }
 
-        .contact-info-item i {
-            color: var(--accent-gold);
-            font-size: 20px;
-        }
-
-        .contact-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            background: linear-gradient(135deg, var(--accent-burgundy), var(--accent-burgundy-light));
-            color: #fff;
-            text-decoration: none;
-            padding: 18px 45px;
-            font-size: 16px;
-            font-weight: 600;
-            border-radius: 50px;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 20px rgba(139, 0, 43, 0.4);
-            border: 1px solid rgba(255,255,255,0.1);
+        .gallery-sub {
+            font-size: 11px;
+            color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 1px;
+            margin-top: 4px;
         }
 
-        .contact-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 30px rgba(139, 0, 43, 0.6);
-            background: linear-gradient(135deg, var(--accent-burgundy-light), #b3214b);
+        /* --- გეგმარება (Floor Plans) --- */
+        .plans-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
         }
 
-        /* ანიმაციები */
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .plan-item {
+            background: var(--bg-secondary);
+            border: 1px solid rgba(255,255,255,0.05);
+            padding: 20px;
+            aspect-ratio: 1 / 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: border-color 0.3s;
         }
 
-        /* მედია რექვესთები */
+        .plan-item:hover {
+            border-color: var(--accent-gold);
+        }
+
+        .plan-item img {
+            width: 80%;
+            height: 80%;
+            object-fit: contain;
+            filter: invert(1) opacity(0.7); /* ნახაზებს თეთრად და ნახევრად გამჭვირვალედ აჩვენებს */
+        }
+
+        /* --- Footer --- */
+        footer {
+            border-top: 1px solid rgba(255,255,255,0.05);
+            padding: 80px 50px;
+            display: flex;
+            justify-content: space-between;
+            background-color: var(--bg-secondary);
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        .footer-col h4 {
+            color: var(--text-light);
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .footer-logo {
+            font-size: 32px;
+            color: var(--text-light);
+            margin-bottom: 10px;
+        }
+
+        .contact-info a {
+            color: var(--text-muted);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 10px;
+        }
+        .contact-info a:hover {
+            color: var(--accent-gold);
+        }
+
+        /* Responsive */
         @media (max-width: 1024px) {
-            .details-wrapper { grid-template-columns: 1fr; }
-            .specs-grid { grid-template-columns: repeat(2, 1fr); margin-top: -100px; }
+            .glass-grid, .gallery-grid, .plans-grid { grid-template-columns: repeat(2, 1fr); }
+            footer { flex-direction: column; gap: 40px; }
         }
-
         @media (max-width: 768px) {
-            .hero-content h1 { font-size: 38px; }
-            .specs-grid { grid-template-columns: 1fr; margin-top: 0; padding: 0 10px; }
-            .text-side { padding: 30px; }
-            .image-grid { grid-template-columns: 1fr; }
-            .investment-card { padding: 35px 20px; }
+            .nav-links { display: none; }
+            .hero h1 { font-size: 36px; padding: 0 20px; }
+            .glass-grid, .gallery-grid, .plans-grid { grid-template-columns: 1fr; }
+            .section-wrapper { padding: 60px 20px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- დეკორატიული ხაზები -->
-    <div class="grid-line line-1"></div>
-    <div class="grid-line line-2"></div>
-    <div class="grid-line line-3"></div>
-
-    <!-- Hero სექცია -->
-    <header class="hero">
-        <div class="hero-content">
-            <span class="hero-badge">OFF-MARKET EXCLUSIVE OFFER</span>
-            <h1>ისტორიული შენობა<br>რუსთაველის გამზირზე</h1>
-            <p>თბილისის ცენტრში, ოპერისა და ბალეტის თეატრის მიმდებარედ</p>
-            <div class="hero-price">
-                <i class="fa-solid fa-tag"></i>
-                1,700,000 $
-            </div>
+    <!-- ნავიგაცია -->
+    <nav>
+        <div class="logo serif">Valdo</div>
+        <div class="nav-links">
+            <span>Home</span>
+            <span>Prestige</span>
+            <span>Interiors</span>
+            <span>Contact</span>
         </div>
-    </header>
+        <button class="btn-outline">დაკავშირება</button>
+    </nav>
 
-    <div class="container">
+    <!-- Hero -->
+    <section class="hero">
+        <h1 class="serif">იყიდება ისტორიული შენობა რუსთაველის გამზირზე</h1>
+        <div class="nav-links" style="margin-top: 20px; color: var(--text-light);">
+            <span>High-End Real Estate Landing Page, Luxury, Prestige</span>
+        </div>
+        <div class="hero-price">1,700,000 $</div>
+    </section>
+
+    <div class="section-wrapper">
         
-        <!-- Specs Grid -->
-        <section class="specs-grid">
-            <div class="spec-card">
-                <i class="fa-solid fa-expand"></i>
-                <span class="label">საერთო ფართი</span>
-                <span class="value">512 მ²</span>
-            </div>
-            <div class="spec-card">
-                <i class="fa-solid fa-building-user"></i>
-                <span class="label">სართულიანობა</span>
-                <span class="value">3 + სარდაფი</span>
-            </div>
-            <div class="spec-card">
-                <i class="fa-solid fa-door-open"></i>
-                <span class="label">ოთახები</span>
-                <span class="value">8 ოთახი</span>
-            </div>
-            <div class="spec-card">
-                <i class="fa-solid fa-shower"></i>
-                <span class="label">საძინებლები / სველი</span>
-                <span class="value">7 / 7</span>
-            </div>
-        </section>
-
-        <!-- აღწერა -->
-        <section class="details-wrapper">
-            <div class="text-side">
-                <h2 style="font-size: 32px; margin-bottom: 25px; color: #fff;">უნიკალური არქიტექტურა და კომერციული პოტენციალი</h2>
-                <p>
-                    ეს არის პრემიუმ კლასის ისტორიული შენობა, რომელიც ამჟამად ფუნქციონირებს როგორც 7-ოთახიანი დახვეწილი ბუტიკ-სასტუმრო. ობიექტი მოიცავს სრულყოფილ ინფრასტრუქტურას: მისაღებს, სასადილო ზონებს, სტუმრების სველ წერტილებს, მცირე სამზარეულოსა და სათავსოებს.
-                </p>
-                <p>
-                    თავისი ექსკლუზიური ლოკაციიდან და დაგეგმარებიდან გამომდინარე, შენობა იდეალურია პრესტიჟული ბანკის ფილიალის, დიპლომატიური მისიის, წარმომადგენლობითი ოფისის ან სხვა მაღალი კლასის კომერციული საქმიანობისთვის.
-                </p>
-            </div>
-            
-            <div class="floors-side">
-                <ul class="floor-list">
-                    <li class="floor-item">
-                        <span class="number">I</span>
-                        <div class="desc">
-                            <h4>პირველი სართული (164.93 მ²)</h4>
-                            <p>მისაღები (Reception), სასადილო დარბაზი, სტუმრების სველი წერტილი, მცირე სამზარეულო.</p>
-                        </div>
-                    </li>
-                    <li class="floor-item">
-                        <span class="number">II</span>
-                        <div class="desc">
-                            <h4>მეორე სართული (114.25 მ²)</h4>
-                            <p>4 ოთახი, თითოეული საკუთარი იზოლირებული სველი წერტილით.</p>
-                        </div>
-                    </li>
-                    <li class="floor-item">
-                        <span class="number">III</span>
-                        <div class="desc">
-                            <h4>მესამე სართული (108.61 მ²)</h4>
-                            <p>4 ოთახი (3 სველი წერტილით) და 1 ღია ტერასიანი სივრცე co-working-ისთვის.</p>
-                        </div>
-                    </li>
-                    <li class="floor-item">
-                        <span class="number">B</span>
-                        <div class="desc">
-                            <h4>ნახევარსარდაფი (125.47 მ²)</h4>
-                            <p>წითელი აგურით ნაშენი აღმოსავლური თაღები 4.5მ ჭერით (ღვინის ბარის ან რესტორნისთვის).</p>
-                        </div>
-                    </li>
+        <!-- სპეციფიკაციები (Glassmorphic Cards) -->
+        <h2 class="section-title">მონაცემები</h2>
+        <div class="glass-grid">
+            <div class="glass-card">
+                <h3 class="serif">ძირითადი პარამეტრები</h3>
+                <ul>
+                    <li>ფართობი: 512 მ²</li>
+                    <li>სტანდარტული: 387 მ²</li>
+                    <li>ნახევარსარდაფი: 125 მ²</li>
+                    <li>სართულიანობა: 3 სართული</li>
                 </ul>
             </div>
-        </section>
-
-        <!-- საინვესტიციო პოტენციალი -->
-        <section class="investment-card">
-            <i class="fa-solid fa-trend-up"></i>
-            <h3>ფასის მოსალოდნელი 400%-იანი ზრდა</h3>
-            <p>
-                თბილისის განვითარების ფონდის მიერ გამოცხადებულია რუსთაველის გამზირის 90-მილიონიანი სრული რეაბილიტაციის პროექტი. წინა წარმატებული ისტორიული რეაბილიტაციების (გუდიაშვილი / ორბელიანი) პრეცედენტებზე დაყრდნობით, ქონების საინვესტიციო ღირებულება სამუშაოების დასრულებისთანავე მკვეთრად გაიზრდება.
-            </p>
-        </section>
-
-        <!-- გალერეა -->
-        <section>
-            <div class="section-header">
-                <span class="sub">ექსკლუზიური კადრები</span>
-                <h2>ობიექტის გალერეა</h2>
+            <div class="glass-card">
+                <h3 class="serif">შენობის სტრუქტურა</h3>
+                <ul>
+                    <li>ჯამში 8 ოთახი</li>
+                    <li>7 საძინებელი ოთახი</li>
+                    <li>7 იზოლირებული სველი წერტილი</li>
+                    <li>აღმოსავლური თაღები (4.5მ ჭერი)</li>
+                </ul>
             </div>
-
-            <!-- კატეგორია 1 -->
-            <div class="gallery-category">
-                <h3>ინტერიერი და საერთო სივრცეები</h3>
-                <div class="image-grid">
-                    <div class="gallery-item">
-                        <img src="reception.jpeg" alt="მისაღები">
-                        <div class="gallery-item-info">
-                            <span>სასტუმრო</span>
-                            <h4>მისაღები (Reception)</h4>
-                        </div>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="staircase.jpeg" alt="კიბე">
-                        <div class="gallery-item-info">
-                            <span>ინტერიერი</span>
-                            <h4>ისტორიული კიბე</h4>
-                        </div>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="second-floor-staircase.jpeg" alt="მეორე სართულის კიბე">
-                        <div class="gallery-item-info">
-                            <span>დეტალი</span>
-                            <h4>მეორე სართულის კიბე</h4>
-                        </div>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="second-floor-fall.jpeg" alt="დერეფანი">
-                        <div class="gallery-item-info">
-                            <span>სივრცე</span>
-                            <h4>მეორე სართულის დერეფანი</h4>
-                        </div>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="room-door.jpeg" alt="ოთახის კარი">
-                        <div class="gallery-item-info">
-                            <span>დიზაინი</span>
-                            <h4>ოთახების შესასვლელი</h4>
-                        </div>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="open-space-mansard.jpeg" alt="ღია სივრცე">
-                        <div class="gallery-item-info">
-                            <span>მანსარდა</span>
-                            <h4>ღია სივრცე</h4>
-                        </div>
-                    </div>
-                </div>
+            <div class="glass-card">
+                <h3 class="serif">საინვესტიციო ღირებულება</h3>
+                <ul>
+                    <li>ფასის 400%-იანი ზრდის პოტენციალი</li>
+                    <li>რუსთაველის სრული რეაბილიტაცია</li>
+                    <li>იდეალურია ბანკის ფილიალისთვის</li>
+                    <li>გამოდგება A-კლასის ოფისად</li>
+                </ul>
             </div>
+        </div>
 
-            <!-- კატეგორია 2 -->
-            <div class="gallery-category">
-                <h3>სასტუმრო ოთახები</h3>
-                <div class="image-grid">
-                    <div class="gallery-item">
-                        <img src="bedroom.jpeg" alt="საძინებელი">
-                        <div class="gallery-item-info">
-                            <span>საპარტნიორო</span>
-                            <h4>ძირითადი საძინებელი</h4>
-                        </div>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="bedroom-three.jpeg" alt="საძინებელი">
-                        <div class="gallery-item-info">
-                            <span>ოთახი №3</span>
-                            <h4>აპარტამენტი</h4>
-                        </div>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="bedroom-four.jpeg" alt="საძინებელი">
-                        <div class="gallery-item-info">
-                            <span>ოთახი №4</span>
-                            <h4>აპარტამენტი</h4>
-                        </div>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="blue-bedroom.jpeg" alt="საძინებელი">
-                        <div class="gallery-item-info">
-                            <span>კომფორტი</span>
-                            <h4>ლურჯი საძინებელი</h4>
-                        </div>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="bedroom-mansard.jpeg" alt="მანსარდა">
-                        <div class="gallery-item-info">
-                            <span>მანსარდა</span>
-                            <h4>მანსარდის აპარტამენტი</h4>
-                        </div>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="blue-bedroom-mansard.jpeg" alt="მანსარდა">
-                        <div class="gallery-item-info">
-                            <span>დიზაინი</span>
-                            <h4>ლურჯი მანსარდა</h4>
-                        </div>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="mansard-bedroom.jpeg" alt="მანსარდა">
-                        <div class="gallery-item-info">
-                            <span>მყუდრო</span>
-                            <h4>მანსარდის ოთახი</h4>
-                        </div>
-                    </div>
-                </div>
+        <!-- გალერეა (Interiors) -->
+        <h2 class="section-title">ინტერიერი</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <div class="gallery-img-wrapper"><img src="reception.jpeg" alt="Reception"></div>
+                <div class="gallery-caption serif">მისაღები სივრცე</div>
+                <div class="gallery-sub">Reception Area</div>
             </div>
-
-            <!-- კატეგორია 3 -->
-            <div class="gallery-category">
-                <h3>სველი წერტილები</h3>
-                <div class="image-grid">
-                    <div class="gallery-item">
-                        <img src="toilet.jpeg" alt="სააბაზანო">
-                        <div class="gallery-item-info">
-                            <span>დიზაინი</span>
-                            <h4>სველი წერტილი №1</h4>
-                        </div>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="toilet-two.jpeg" alt="სააბაზანო">
-                        <div class="gallery-item-info">
-                            <span>დიზაინი</span>
-                            <h4>სველი წერტილი №2</h4>
-                        </div>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="washroom.jpeg" alt="სააბაზანო">
-                        <div class="gallery-item-info">
-                            <span>დასასვენებელი</span>
-                            <h4>სააბაზანო სივრცე</h4>
-                        </div>
-                    </div>
-                </div>
+            <div class="gallery-item">
+                <div class="gallery-img-wrapper"><img src="staircase.jpeg" alt="Staircase"></div>
+                <div class="gallery-caption serif">ისტორიული კიბე</div>
+                <div class="gallery-sub">Main Staircase</div>
             </div>
-
-            <!-- კატეგორია 4 -->
-            <div class="gallery-category">
-                <h3>გეგმარებები და ნახაზები</h3>
-                <div class="image-grid plans">
-                    <div class="gallery-item"><img src="plan.jpg" alt="გეგმარება"></div>
-                    <div class="gallery-item"><img src="plan-1.jpg" alt="გეგმარება"></div>
-                    <div class="gallery-item"><img src="plan-2.jpg" alt="გეგმარება"></div>
-                    <div class="gallery-item"><img src="plan-3.jpg" alt="გეგმარება"></div>
-                    <div class="gallery-item"><img src="plan-4.jpg" alt="გეგმარება"></div>
-                    <div class="gallery-item"><img src="plan-5.jpg" alt="გეგმარება"></div>
-                    <div class="gallery-item"><img src="plan-6.jpg" alt="გეგმარება"></div>
-                </div>
+            <div class="gallery-item">
+                <div class="gallery-img-wrapper"><img src="second-floor-staircase.jpeg" alt="Hall"></div>
+                <div class="gallery-caption serif">მეორე სართული</div>
+                <div class="gallery-sub">Upper Hall</div>
             </div>
+            <div class="gallery-item">
+                <div class="gallery-img-wrapper"><img src="second-floor-fall.jpeg" alt="Corridor"></div>
+                <div class="gallery-caption serif">დერეფანი</div>
+                <div class="gallery-sub">Corridor</div>
+            </div>
+            
+            <div class="gallery-item">
+                <div class="gallery-img-wrapper"><img src="bedroom.jpeg" alt="Bedroom 1"></div>
+                <div class="gallery-caption serif">მთავარი საძინებელი</div>
+                <div class="gallery-sub">Master Suite</div>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-img-wrapper"><img src="blue-bedroom.jpeg" alt="Blue Bedroom"></div>
+                <div class="gallery-caption serif">ლურჯი აპარტამენტი</div>
+                <div class="gallery-sub">Blue Room</div>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-img-wrapper"><img src="bedroom-three.jpeg" alt="Bedroom 3"></div>
+                <div class="gallery-caption serif">სტუმრის ოთახი</div>
+                <div class="gallery-sub">Guest Room</div>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-img-wrapper"><img src="bedroom-mansard.jpeg" alt="Mansard"></div>
+                <div class="gallery-caption serif">მანსარდის სივრცე</div>
+                <div class="gallery-sub">Top Floor Suite</div>
+            </div>
+        </div>
 
-        </section>
+        <!-- გეგმარება (Plans) -->
+        <h2 class="section-title">გეგმარება</h2>
+        <div class="plans-grid">
+            <div class="plan-item">
+                <img src="plan.jpg" alt="Plan">
+                <div class="gallery-sub" style="margin-top: 15px;">Main Plan</div>
+            </div>
+            <div class="plan-item">
+                <img src="plan-1.jpg" alt="Plan 1">
+                <div class="gallery-sub" style="margin-top: 15px;">Floor 1</div>
+            </div>
+            <div class="plan-item">
+                <img src="plan-2.jpg" alt="Plan 2">
+                <div class="gallery-sub" style="margin-top: 15px;">Floor 2</div>
+            </div>
+            <div class="plan-item">
+                <img src="plan-3.jpg" alt="Plan 3">
+                <div class="gallery-sub" style="margin-top: 15px;">Floor 3</div>
+            </div>
+        </div>
 
     </div>
 
-    <!-- საკონტაქტო სექცია -->
-    <footer class="contact-section">
-        <div class="contact-wrapper">
-            <div class="contact-card">
-                <h3>Valdo Company</h3>
-                <span class="sub">luxury real estate development</span>
-                
-                <div class="contact-details">
-                    <div class="contact-info-item">
-                        <i class="fa-solid fa-user-tie"></i>
-                        <span>ბროკერი: რეზი მაქაცარია</span>
-                    </div>
-                    <div class="contact-info-item">
-                        <i class="fa-solid fa-envelope-open-text"></i>
-                        <span>rezimaqacaria@gmail.com</span>
-                    </div>
-                </div>
+    <!-- Footer -->
+    <footer>
+        <div class="footer-col">
+            <h4>High-end real<br>estate brokerage</h4>
+            <p style="margin-top: 10px;">Valdo Company</p>
+        </div>
+        
+        <div class="footer-col" style="text-align: center;">
+            <div class="footer-logo serif">Valdo</div>
+            <p>კომერციული უძრავი ქონება</p>
+        </div>
 
-                <a href="tel:+995592613061" class="contact-btn">
-                    <i class="fa-solid fa-phone-volume"></i>
-                    დაკავშირება: +995 592 613 061
-                </a>
-            </div>
+        <div class="footer-col contact-info" style="text-align: right;">
+            <h4>Contact us:</h4>
+            <a href="tel:+995592613061"><i class="fa-solid fa-phone" style="margin-right: 8px;"></i> 032 665 7760 / 592 613 061</a>
+            <a href="mailto:rezimaqacaria@gmail.com"><i class="fa-solid fa-envelope" style="margin-right: 8px;"></i> rezimaqacaria@gmail.com</a>
+            <a href="#"><i class="fa-solid fa-globe" style="margin-right: 8px;"></i> www.valdocompany.com</a>
         </div>
     </footer>
 
